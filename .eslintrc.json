@@ -12,12 +12,23 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "no-console": "warn",
+        "no-useless-return": "warn",
+        "no-console": [
+          "error",
+          {
+            "allow": ["warn", "error"]
+          }
+        ],
         "no-empty": "error",
-        "no-nested-ternary":"error",
-        "eqeqeq":"error",
-        "no-eq-null":"error",
-        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "no-nested-ternary": "error",
+        "eqeqeq": "error",
+        "no-eq-null": "error",
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto"
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -46,7 +57,12 @@
       "excludedFiles": ["*inline-template-*.component.html"],
       "extends": ["plugin:prettier/recommended"],
       "rules": {
-        "prettier/prettier": ["error", { "parser": "angular" }]
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
       }
     }
   ]

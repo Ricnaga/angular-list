@@ -3,6 +3,23 @@
 }
 
 .sidebar{
-    width: 20rem; 
+    width: 18rem; 
     height: 100%;
+
+    &__icon {
+        margin: 2rem auto;
+    
+        width: 100px;
+        height: 100px;
+    
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    
+        background-color:darkgray;
+    
+        border-radius: 5rem;
+    }
 }
+
+

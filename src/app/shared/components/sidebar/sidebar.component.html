@@ -1,7 +1,12 @@
 <mat-drawer-container hasBackdrop="true" class="container">
-  <mat-drawer [opened]="isOpen" mode="over" class="sidebar"
-    >I'm a drawer</mat-drawer
-  >
+  <mat-drawer [opened]="isOpen" mode="over" class="sidebar">
+    <div class="sidebar__icon">
+      <mat-icon>person</mat-icon>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let nav of navBar"> {{ nav }}</a>
+    </mat-nav-list>
+  </mat-drawer>
   <mat-drawer-content>
     <ng-content></ng-content>
   </mat-drawer-content>

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-list';
+  isOpenSideBar = false;
+
+  handleSideBar() {
+    this.isOpenSideBar = !this.isOpenSideBar;
+  }
 }

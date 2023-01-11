@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BackdropModule } from './backdrop/backdrop.module';
-import { SidebarModule } from './sidebar/sidebar.module';
-import { TopbarModule } from './topbar/topbar.module';
+import { BackdropComponent } from './backdrop/backdrop.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
-const MODULES = [BackdropModule, SidebarModule, TopbarModule];
+const COMPONENTS = [BackdropComponent, SidebarComponent, TopbarComponent];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MODULES],
-  exports: [MODULES],
+  imports: [COMPONENTS],
+  exports: [COMPONENTS],
 })
 export class ComponentsModule {}
