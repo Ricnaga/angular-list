@@ -1,25 +1,23 @@
-.container{
-    height: 100%;
+.container {
+  height: 100%;
 }
 
-.sidebar{
-    width: 18rem; 
-    height: 100%;
+.sidebar {
+  width: 18rem;
+  height: 100%;
 
-    &__icon {
-        margin: 2rem auto;
-    
-        width: 100px;
-        height: 100px;
-    
-        display: grid;
-        align-items: center;
-        justify-content: center;
-    
-        background-color:darkgray;
-    
-        border-radius: 5rem;
-    }
+  &__icon {
+    margin: 2rem auto;
+
+    width: 100px;
+    height: 100px;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    background-color: darkgray;
+
+    border-radius: 5rem;
+  }
 }
-
-

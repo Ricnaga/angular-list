@@ -1,6 +1,8 @@
+@use "variables" as sass;
+
 .container {
   height: 100%;
-  background-color: #ffcb00;
+  background-color: sass.$primary;
   padding: 0;
 }
 

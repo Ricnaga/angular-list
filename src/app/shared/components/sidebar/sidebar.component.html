@@ -4,7 +4,9 @@
       <mat-icon>person</mat-icon>
     </div>
     <mat-nav-list>
-      <a mat-list-item *ngFor="let nav of navBar"> {{ nav }}</a>
+      <a mat-list-item *ngFor="let nav of navBar" [routerLink]="nav.path">
+        {{ nav.name }}</a
+      >
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>

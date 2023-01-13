@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BackdropComponent } from './backdrop/backdrop.component';
+import { ContainerComponent } from './container/container.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 
-const COMPONENTS = [BackdropComponent, SidebarComponent, TopbarComponent];
+const COMPONENTS = [
+  BackdropComponent,
+  SidebarComponent,
+  TopbarComponent,
+  ContainerComponent,
+];
 
 @NgModule({
   declarations: [],
