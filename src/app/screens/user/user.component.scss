@@ -1,0 +1,22 @@
+@use 'variables' as sass;
+
+.header {
+  margin: 0 0 4rem;
+  border-radius: 8px;
+
+  &__back {
+    margin-right: .5rem;
+  }
+  
+  &__title {
+    margin:auto auto auto 1.4rem;
+  }
+
+  mat-divider {
+    height: 80%;
+  }
+}
+
+button {
+  background-color: sass.$secondary;
+}

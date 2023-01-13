@@ -1,0 +1,22 @@
+@use 'variables' as sass;
+
+button {
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  background-color: sass.$primary;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  &__filter {
+    display: grid;
+    grid-column: span 3;
+  }
+
+  &__btn {
+    display: grid;
+    grid-column: 13/13;
+  }
+}
+
