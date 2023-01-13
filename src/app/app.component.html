@@ -4,7 +4,9 @@
   </mat-grid-tile>
 
   <mat-grid-tile rowspan="9">
-    <lab-sidebar [isOpen]="isOpenSideBar" class="sidebar"></lab-sidebar>
+    <lab-sidebar [isOpen]="isOpenSideBar" class="sidebar">
+      <router-outlet></router-outlet>
+    </lab-sidebar>
   </mat-grid-tile>
 </mat-grid-list>
 
