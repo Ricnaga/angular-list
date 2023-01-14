@@ -1,5 +1,9 @@
 .container {
   height: 99%;
+
+  &__body {
+    padding: 2rem;
+  }
 }
 
 .topbar,
