@@ -1,1 +1,21 @@
-<p>user-delete works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title
+      ><p class="mat-headline-5">Excluir Usuário</p></mat-card-title
+    >
+    <mat-card-subtitle>
+      <p class="mat-subtitle-1">Deseja realmente excluir esse usuário ?</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-actions class="card__actions">
+    <button mat-raised-button class="card__actions--submit">Enviar</button>
+    <button
+      mat-raised-button
+      class="card__actions--cancel"
+      (click)="onCancel()"
+    >
+      Cancelar
+    </button>
+  </mat-card-actions>
+</mat-card>
