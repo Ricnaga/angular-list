@@ -1,1 +1,44 @@
-<p>create works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><p class="mat-headline-5">Criar Usuário</p></mat-card-title>
+    <mat-card-subtitle>
+      <p class="mat-subtitle-1">
+        Informe os dados abaixo para criar um usuário
+      </p>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="content">
+    <div class="content__input">
+      <mat-form-field appearance="outline" class="content__input__field">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Informe o nome" />
+      </mat-form-field>
+    </div>
+
+    <div class="content__input">
+      <mat-form-field appearance="outline" class="content__input__field">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput placeholder="Informe o sobrenome" />
+      </mat-form-field>
+    </div>
+
+    <div class="content__input">
+      <mat-form-field appearance="outline" class="content__input__field">
+        <mat-label>Idade</mat-label>
+        <input matInput placeholder="Informe a idade" />
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="card__actions">
+    <button mat-raised-button class="card__actions--submit">Enviar</button>
+    <button
+      mat-raised-button
+      class="card__actions--cancel"
+      (click)="onCancel()"
+    >
+      Cancelar
+    </button>
+  </mat-card-actions>
+</mat-card>

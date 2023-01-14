@@ -5,11 +5,12 @@
   border-radius: 8px;
 
   &__back {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
-  
+
   &__title {
-    margin:auto auto auto 1.4rem;
+    height: 100%;
+    margin-left: 1.4rem;
   }
 
   mat-divider {

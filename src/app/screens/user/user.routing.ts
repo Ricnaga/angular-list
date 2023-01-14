@@ -1,8 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { UserCreateComponent } from './user-create/user-create.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserUpdateComponent } from './user-update/user-update.component';
-import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserComponent } from './user.component';
 
 export const USER_PATH = {
@@ -19,19 +15,31 @@ const routes: Routes = [
     children: [
       {
         path: USER_PATH.list,
-        component: UserListComponent,
+        loadComponent: () =>
+          import('./user-list/user-list.component').then(
+            (c) => c.UserListComponent,
+          ),
       },
       {
         path: USER_PATH.create,
-        component: UserCreateComponent,
+        loadComponent: () =>
+          import('./user-create/user-create.component').then(
+            (c) => c.UserCreateComponent,
+          ),
       },
       {
         path: USER_PATH.update,
-        component: UserUpdateComponent,
+        loadComponent: () =>
+          import('./user-update/user-update.component').then(
+            (c) => c.UserUpdateComponent,
+          ),
       },
       {
         path: USER_PATH.delete,
-        component: UserDeleteComponent,
+        loadComponent: () =>
+          import('./user-delete/user-delete.component').then(
+            (c) => c.UserDeleteComponent,
+          ),
       },
     ],
   },
