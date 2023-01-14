@@ -9,6 +9,13 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserListType, UserPathType } from './user-list.type';
 
+const DATASOURCE_MOCK = [
+  { id: '1', firstName: 'valter', lastName: 'souza', age: '12' },
+  { id: '2', firstName: 'luiz', lastName: 'monteiro', age: '22' },
+  { id: '3', firstName: 'flavio', lastName: 'escaminosflau', age: '54' },
+  { id: '4', firstName: 'roberta', lastName: 'fulas', age: '08' },
+];
+
 @Component({
   selector: 'lab-user-list',
   standalone: true,
@@ -29,9 +36,7 @@ export class UserListComponent implements AfterViewInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.displayedColumns = ['id', 'firstName', 'lastName', 'age', 'actions'];
-    this.dataSource = new MatTableDataSource([
-      { id: '1', firstName: 'valter', lastName: 'souza', age: '12' },
-    ]);
+    this.dataSource = new MatTableDataSource(DATASOURCE_MOCK);
   }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
