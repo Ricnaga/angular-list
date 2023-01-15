@@ -1,0 +1,10 @@
+<mat-toolbar class="header">
+  <div class="header__back">
+    <button mat-fab (click)="onBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <mat-divider [vertical]="true" class="header__divider"></mat-divider>
+
+  <p class="header__title mat-headline-3">{{ title }}</p>
+</mat-toolbar>

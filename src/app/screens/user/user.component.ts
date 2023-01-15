@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'lab-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  template: `
+    <lab-page-header [title]="title"></lab-page-header>
+    <router-outlet></router-outlet>
+  `,
 })
 export class UserComponent {
   title: string;
 
-  constructor(private router: Router) {
+  constructor() {
     this.title = 'Usuários';
-  }
-
-  onBack() {
-    this.router.navigate(['']);
   }
 }
