@@ -9,24 +9,10 @@
   </mat-card-header>
 
   <mat-card-content class="content">
-    <div class="content__input">
+    <div class="content__input" *ngFor="let field of FIELDS">
       <mat-form-field appearance="outline" class="content__input__field">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Informe o nome" />
-      </mat-form-field>
-    </div>
-
-    <div class="content__input">
-      <mat-form-field appearance="outline" class="content__input__field">
-        <mat-label>Sobrenome</mat-label>
-        <input matInput placeholder="Informe o sobrenome" />
-      </mat-form-field>
-    </div>
-
-    <div class="content__input">
-      <mat-form-field appearance="outline" class="content__input__field">
-        <mat-label>Idade</mat-label>
-        <input matInput placeholder="Informe a idade" />
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [placeholder]="field.placeholder" />
       </mat-form-field>
     </div>
   </mat-card-content>

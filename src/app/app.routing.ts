@@ -9,8 +9,8 @@ const routes: Routes = [
   },
   {
     path: TODO,
-    loadComponent: () =>
-      import('./screens/todo/todo.component').then((c) => c.TodoComponent),
+    loadChildren: () =>
+      import('./screens/todo/todo.module').then((m) => m.TodoModule),
   },
 ];
 

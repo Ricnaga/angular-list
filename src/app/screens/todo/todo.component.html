@@ -1,1 +1,13 @@
-<p>todo works! BIRLLLLLL</p>
+<mat-toolbar class="header">
+  <div class="header__back">
+    <button mat-fab (click)="onBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="header__title">
+    <p class="mat-headline-3">{{ title }}</p>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

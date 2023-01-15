@@ -1,0 +1,27 @@
+@use 'variables' as sass;
+
+.card {
+  &__actions {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
+}
+
+button.card__actions--submit {
+  display: grid;
+  grid-column: 11/12;
+  background-color: sass.$primary;
+}
+
+button.card__actions--cancel {
+  display: grid;
+  grid-column: 12/12;
+  background-color: sass.$secondary;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
