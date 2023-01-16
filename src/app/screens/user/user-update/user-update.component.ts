@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserUpdateFieldEnum } from './user-update-field.enum';
 import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @Component({
   selector: 'lab-user-update',
@@ -17,11 +18,14 @@ import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
+    ComponentsModule,
   ],
   templateUrl: './user-update.component.html',
   styleUrls: ['./user-update.component.scss'],
 })
 export class UserUpdateComponent implements OnInit {
+  title: string;
+  subtitle: string;
   form!: FormGroup;
   fields: Array<IUserUpdateField>;
   values!: IUserUpdateValue;
@@ -31,6 +35,8 @@ export class UserUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
   ) {
+    this.title = 'Editar Usuário';
+    this.subtitle = 'Edite as informações do usuário';
     this.fields = [
       {
         label: 'Nome',
