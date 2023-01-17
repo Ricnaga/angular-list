@@ -7,6 +7,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFormService } from './components/dynamic-form/dynamic-form.service';
 import { FieldBaseModel } from './components/dynamic-form/models/field-base.model';
+import { IUserCreateValue } from './user-create-field.type';
 
 @Component({
   selector: 'lab-user-create',
@@ -24,7 +25,7 @@ import { FieldBaseModel } from './components/dynamic-form/models/field-base.mode
 export class UserCreateComponent {
   form: FormGroup;
   fields: Array<FieldBaseModel<string>> | null;
-  values!: any;
+  values!: IUserCreateValue;
 
   constructor(
     private router: Router,

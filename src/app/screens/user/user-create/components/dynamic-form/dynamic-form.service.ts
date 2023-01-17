@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FieldBaseModel } from './models/field-base.model';
 import { TextboxModel } from './models/textbox.model';
+import { UserCreateFieldEnum } from './user-createupdate-field.enum';
 
 interface FormGroupObject<T> {
   [key: string]: FormControl<T | null>;
@@ -26,7 +27,7 @@ export class DynamicFormService {
   get fields(): Array<FieldBaseModel<string>> {
     return [
       new TextboxModel({
-        key: 'nome',
+        key: UserCreateFieldEnum.NOME,
         label: 'Nome',
         placeholder: 'Informe o nome',
         className: 'content__input__field',
@@ -34,7 +35,7 @@ export class DynamicFormService {
         order: 1,
       }),
       new TextboxModel({
-        key: 'sobrenome',
+        key: UserCreateFieldEnum.SOBRENOME,
         label: 'Sobrenome',
         placeholder: 'Informe o sobrenome',
         className: 'content__input__field',
@@ -42,7 +43,7 @@ export class DynamicFormService {
         order: 1,
       }),
       new TextboxModel({
-        key: 'idade',
+        key: UserCreateFieldEnum.IDADE,
         label: 'Idade',
         placeholder: 'Informe a idade',
         className: 'content__input__field',
