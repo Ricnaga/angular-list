@@ -12,10 +12,10 @@ interface FormGroupObject<T> {
   providedIn: 'root',
 })
 export class DynamicFormService {
-  toFormGroup(formFields: Array<FieldBaseModel<string>>) {
+  toFormGroup() {
     const group: FormGroupObject<string> = {};
 
-    formFields.forEach((field) => {
+    this.fields.forEach((field) => {
       group[field.key] = new FormControl(
         field.value ?? '',
         field.required ? Validators.required : null,

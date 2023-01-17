@@ -33,9 +33,7 @@ export class UserCreateComponent {
     private dynamicFormService: DynamicFormService,
   ) {
     this.fields = this.dynamicFormService.fields;
-    this.form = this.dynamicFormService.toFormGroup(
-      this.dynamicFormService.fields,
-    );
+    this.form = this.dynamicFormService.toFormGroup();
   }
 
   onCancel() {

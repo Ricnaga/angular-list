@@ -12,20 +12,7 @@ export class FieldBaseModel<T> implements IFieldBaseModel<T> {
   placeholder: string;
   options: Record<'value' | 'key', string>[];
 
-  constructor(
-    options: {
-      value?: T;
-      key?: string;
-      label?: string;
-      required?: boolean;
-      order?: number;
-      controlType?: string;
-      className?: string;
-      type?: string;
-      placeholder?: string;
-      options?: Record<'value' | 'key', string>[];
-    } = {},
-  ) {
+  constructor(options: Partial<IFieldBaseModel<T>> = {}) {
     this.value = options.value;
     this.key = options.key ?? '';
     this.label = options.label ?? '';
