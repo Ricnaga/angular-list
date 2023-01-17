@@ -8,10 +8,4 @@ import { USER_ROUTING } from './user.routing';
   declarations: [UserComponent],
   imports: [CommonModule, USER_ROUTING, ComponentsModule],
 })
-export class UserModule {
-  title: string;
-
-  constructor() {
-    this.title = 'Usuários';
-  }
-}
+export class UserModule {}

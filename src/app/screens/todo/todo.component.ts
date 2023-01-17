@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'lab-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss'],
+  template: `
+    <lab-page-header [title]="title"></lab-page-header>
+    <router-outlet></router-outlet>
+  `,
 })
 export class TodoComponent {
   title: string;
