@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { UserUpdateFieldEnum } from './user-update-field.enum';
 import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @Component({
   selector: 'lab-user-update',
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
     ComponentsModule,
@@ -24,8 +20,6 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
   styleUrls: ['./user-update.component.scss'],
 })
 export class UserUpdateComponent implements OnInit {
-  title: string;
-  subtitle: string;
   form!: FormGroup;
   fields: Array<IUserUpdateField>;
   values!: IUserUpdateValue;
@@ -35,8 +29,6 @@ export class UserUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
   ) {
-    this.title = 'Editar Usuário';
-    this.subtitle = 'Edite as informações do usuário';
     this.fields = [
       {
         label: 'Nome',
@@ -69,7 +61,7 @@ export class UserUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.values = { ...this.values, ...this.form.value };
+    this.values = Object.assign({}, this.form.value);
     console.warn('this is the submit values: ', this.values);
   }
 }
