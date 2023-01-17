@@ -1,0 +1,8 @@
+.content {
+  &__input {
+    &__field {
+      display: grid;
+      grid-column: span 12;
+    }
+  }
+}

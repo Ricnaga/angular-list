@@ -27,12 +27,7 @@ button.card__actions--cancel {
 
   &__input {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column: span 12;
-
-    &__field {
-      display: grid;
-      grid-column: span 5;
-    }
   }
 }

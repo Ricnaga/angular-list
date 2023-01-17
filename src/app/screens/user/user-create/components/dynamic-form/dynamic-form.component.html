@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="field.controlType">
+    <mat-form-field
+      *ngSwitchCase="'textbox'"
+      appearance="outline"
+      [class]="field.className"
+    >
+      <mat-label>{{ field.label }}</mat-label>
+      <input
+        matInput
+        [placeholder]="field.placeholder"
+        [formControlName]="field.key"
+        [id]="field.key"
+        [type]="field.type"
+      />
+    </mat-form-field>
+  </div>
+</div>
