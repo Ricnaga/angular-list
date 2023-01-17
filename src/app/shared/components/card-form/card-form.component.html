@@ -8,9 +8,9 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" *ngIf="formGroup">
     <mat-card-content class="content">
-      <ng-content></ng-content>
+      <ng-container *ngTemplateOutlet="cardContent"></ng-container>
     </mat-card-content>
 
     <mat-card-actions class="card__actions">
@@ -24,4 +24,24 @@
       </button>
     </mat-card-actions>
   </form>
+
+  <div *ngIf="!formGroup">
+    <mat-card-content class="content">
+      <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+    </mat-card-content>
+    <mat-card-actions class="card__actions">
+      <button mat-raised-button class="card__actions--submit">Enviar</button>
+      <button
+        mat-raised-button
+        class="card__actions--cancel"
+        (click)="onCancel()"
+      >
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </div>
+
+  <ng-template #cardContent>
+    <ng-content></ng-content>
+  </ng-template>
 </mat-card>

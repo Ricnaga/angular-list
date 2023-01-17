@@ -1,17 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { UserDeleteType } from './user-delete.type';
 
 @Component({
   selector: 'lab-user-delete',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatListModule],
+  imports: [CommonModule, MatListModule, ComponentsModule],
   templateUrl: './user-delete.component.html',
-  styleUrls: ['./user-delete.component.scss'],
 })
 export class UserDeleteComponent {
   user: Array<UserDeleteType> = [
@@ -25,5 +23,9 @@ export class UserDeleteComponent {
 
   onCancel() {
     this.router.navigate(['../../'], { relativeTo: this.route });
+  }
+
+  onDelete() {
+    console.warn('this is the submit values: ');
   }
 }
