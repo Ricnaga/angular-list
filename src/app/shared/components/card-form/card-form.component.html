@@ -13,24 +13,29 @@
       <ng-container *ngTemplateOutlet="cardContent"></ng-container>
     </mat-card-content>
 
-    <mat-card-actions class="card__actions">
-      <button mat-raised-button class="card__actions--submit">Enviar</button>
-      <button
-        mat-raised-button
-        class="card__actions--cancel"
-        (click)="onCancel()"
-      >
-        Cancelar
-      </button>
-    </mat-card-actions>
+    <ng-container *ngTemplateOutlet="cardButtons"></ng-container>
   </form>
 
   <div *ngIf="!formGroup">
     <mat-card-content class="content">
       <ng-container *ngTemplateOutlet="cardContent"></ng-container>
     </mat-card-content>
+    <ng-container *ngTemplateOutlet="cardButtons"></ng-container>
+  </div>
+
+  <ng-template #cardContent>
+    <ng-content></ng-content>
+  </ng-template>
+
+  <ng-template #cardButtons>
     <mat-card-actions class="card__actions">
-      <button mat-raised-button class="card__actions--submit">Enviar</button>
+      <button
+        mat-raised-button
+        class="card__actions--submit"
+        (click)="onSubmit()"
+      >
+        Enviar
+      </button>
       <button
         mat-raised-button
         class="card__actions--cancel"
@@ -39,9 +44,5 @@
         Cancelar
       </button>
     </mat-card-actions>
-  </div>
-
-  <ng-template #cardContent>
-    <ng-content></ng-content>
   </ng-template>
 </mat-card>
