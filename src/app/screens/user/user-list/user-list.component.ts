@@ -31,7 +31,7 @@ const DATASOURCE_MOCK = [
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements AfterViewInit {
-  displayedColumns: string[];
+  displayedColumns: Array<keyof UserListType | 'actions'>;
   dataSource: MatTableDataSource<UserListType>;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
@@ -45,6 +45,11 @@ export class UserListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  onFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onNavigateTo(path: UserPathType, id = '') {
