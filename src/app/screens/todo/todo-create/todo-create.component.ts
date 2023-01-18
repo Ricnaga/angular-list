@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { TodoCreateFieldEnum } from './todo-create-field.enum';
 
 @Component({
   selector: 'lab-todo-create',
@@ -13,32 +14,32 @@ export class TodoCreateComponent {
   model = {};
   fields: FormlyFieldConfig[] = [
     {
-      key: 'firstName',
+      key: TodoCreateFieldEnum.TITULO,
       type: 'input',
       props: {
         appearance: 'outline',
-        label: 'Nome',
-        placeholder: 'Informe o nome',
+        label: 'Título',
+        placeholder: 'Informe o título',
         required: true,
       },
     },
     {
-      key: 'lastName',
+      key: TodoCreateFieldEnum.DESCRICAO,
       type: 'input',
       props: {
         appearance: 'outline',
-        label: 'Sobrenome',
-        placeholder: 'Informe o sobrenome',
+        label: 'Descrição',
+        placeholder: 'Informe o descrição',
         required: true,
       },
     },
     {
-      key: 'age',
+      key: TodoCreateFieldEnum.OBSERVACAO,
       type: 'input',
       props: {
         appearance: 'outline',
-        label: 'Idade',
-        placeholder: 'Informe a idade',
+        label: 'Observação',
+        placeholder: 'Informe a observação',
         required: true,
       },
     },

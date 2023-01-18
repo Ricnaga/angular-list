@@ -7,13 +7,33 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TodoListType, TodoPathType } from './todo-list.type';
+import { TodoColumnKey, TodoListType, TodoPathType } from './todo-list.type';
 
 const DATASOURCE_MOCK = [
-  { id: '1', firstName: 'valter', lastName: 'souza', age: '12' },
-  { id: '2', firstName: 'luiz', lastName: 'monteiro', age: '22' },
-  { id: '3', firstName: 'flavio', lastName: 'escaminosflau', age: '54' },
-  { id: '4', firstName: 'roberta', lastName: 'fulas', age: '08' },
+  {
+    id: '1',
+    title: 'valter',
+    description: 'souza',
+    remarks: 'observation 1',
+  },
+  {
+    id: '2',
+    title: 'luiz',
+    description: 'monteiro',
+    remarks: 'observation 2',
+  },
+  {
+    id: '3',
+    title: 'flavio',
+    description: 'escaminosflau',
+    remarks: 'observation 3',
+  },
+  {
+    id: '4',
+    title: 'roberta',
+    description: 'fulas',
+    remarks: 'observation 4',
+  },
 ];
 
 @Component({
@@ -31,11 +51,17 @@ const DATASOURCE_MOCK = [
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements AfterViewInit {
-  displayedColumns: string[];
+  displayedColumns: TodoColumnKey;
   dataSource: MatTableDataSource<TodoListType>;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.displayedColumns = ['id', 'firstName', 'lastName', 'age', 'actions'];
+    this.displayedColumns = [
+      'id',
+      'title',
+      'description',
+      'remarks',
+      'actions',
+    ];
     this.dataSource = new MatTableDataSource(DATASOURCE_MOCK);
   }
 
@@ -45,6 +71,11 @@ export class TodoListComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  onFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onNavigateTo(path: TodoPathType, id = '') {

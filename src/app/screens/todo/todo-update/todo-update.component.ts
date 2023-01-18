@@ -19,32 +19,32 @@ export class TodoUpdateComponent {
     this.model = {};
     this.fields = [
       {
-        key: TodoUpdateFieldEnum.NOME,
+        key: TodoUpdateFieldEnum.TITULO,
         type: 'input',
         props: {
           appearance: 'outline',
-          label: 'Nome',
-          placeholder: 'Informe o nome',
+          label: 'Título',
+          placeholder: 'Informe o título',
           required: true,
         },
       },
       {
-        key: TodoUpdateFieldEnum.SOBRENOME,
+        key: TodoUpdateFieldEnum.DESCRICAO,
         type: 'input',
         props: {
           appearance: 'outline',
-          label: 'Sobrenome',
-          placeholder: 'Informe o sobrenome',
+          label: 'Descrição',
+          placeholder: 'Informe o descrição',
           required: true,
         },
       },
       {
-        key: TodoUpdateFieldEnum.IDADE,
+        key: TodoUpdateFieldEnum.OBSERVACAO,
         type: 'input',
         props: {
           appearance: 'outline',
-          label: 'Idade',
-          placeholder: 'Informe a idade',
+          label: 'Observação',
+          placeholder: 'Informe a observação',
           required: true,
         },
       },

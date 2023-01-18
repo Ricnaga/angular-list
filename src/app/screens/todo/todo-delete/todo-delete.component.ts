@@ -16,9 +16,9 @@ import { TodoDeleteType } from './todo-delete.type';
 export class TodoDeleteComponent {
   user: Array<TodoDeleteType> = [
     { title: 'ID', description: '3' },
-    { title: 'First Name', description: 'Valter' },
-    { title: 'Last Name', description: 'Escaminosflau' },
-    { title: 'Age', description: '35' },
+    { title: 'Título', description: 'Valter' },
+    { title: 'Descrição', description: 'Escaminosflau' },
+    { title: 'Observações', description: '35' },
   ];
 
   constructor(private router: Router, private route: ActivatedRoute) {}
