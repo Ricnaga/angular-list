@@ -34,9 +34,9 @@ const routes: Routes = [
       },
       {
         path: TODO_PATH.delete,
-        loadComponent: () =>
-          import('./todo-delete/todo-delete.component').then(
-            (c) => c.TodoDeleteComponent,
+        loadChildren: () =>
+          import('./todo-delete/todo-delete.module').then(
+            (m) => m.TodoDeleteModule,
           ),
       },
     ],

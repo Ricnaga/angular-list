@@ -1,15 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoDeleteType } from './todo-delete.type';
 
 @Component({
   selector: 'lab-todo-delete',
-  standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatListModule],
   templateUrl: './todo-delete.component.html',
   styleUrls: ['./todo-delete.component.scss'],
 })

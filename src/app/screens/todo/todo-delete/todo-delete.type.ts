@@ -1,4 +1,1 @@
-export type TodoDeleteType = {
-  title: string;
-  description: string;
-};
+export type TodoDeleteType = Record<'title' | 'description', string>;
