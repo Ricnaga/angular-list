@@ -1,4 +1,4 @@
-import { UserCreateFieldEnum } from './components/dynamic-form/user-createupdate-field.enum';
+import { UserCreateFieldEnum } from './components/dynamic-form/user-create-field.enum';
 
 export interface UserCreateField {
   nome: string;

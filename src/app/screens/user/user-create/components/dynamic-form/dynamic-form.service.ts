@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FieldBaseModel } from './models/field-base.model';
 import { TextboxModel } from './models/textbox.model';
-import { UserCreateFieldEnum } from './user-createupdate-field.enum';
+import { UserCreateFieldEnum } from './user-create-field.enum';
 
 interface FormGroupObject<T> {
   [key: string]: FormControl<T | null>;

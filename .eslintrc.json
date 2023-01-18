@@ -13,6 +13,8 @@
       ],
       "rules": {
         "no-useless-return": "warn",
+        "no-duplicate-imports": "error",
+        "no-compare-neg-zero": "error",
         "no-console": [
           "error",
           {
