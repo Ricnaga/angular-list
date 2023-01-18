@@ -22,6 +22,7 @@ import { SidebarType } from './sidebar.type';
 })
 export class SidebarComponent {
   @Input() isOpen = false;
+  @Input() userName = '';
 
   navBar: SidebarType = [
     { path: USERS, name: 'Usuários' },

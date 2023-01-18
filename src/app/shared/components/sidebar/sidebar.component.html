@@ -3,6 +3,7 @@
     <div class="sidebar__icon">
       <mat-icon>person</mat-icon>
     </div>
+    <p class="mat-headline-5 sidebar__username">{{ userName }}</p>
     <mat-nav-list>
       <a mat-list-item *ngFor="let nav of navBar" [routerLink]="nav.path">
         {{ nav.name }}</a
