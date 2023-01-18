@@ -1,31 +1,14 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title
-      ><p class="mat-headline-5">Editar Usuário</p></mat-card-title
-    >
-    <mat-card-subtitle>
-      <p class="mat-subtitle-1">Edite as informações do usuário</p>
-    </mat-card-subtitle>
-  </mat-card-header>
-
-  <form [formGroup]="form">
-    <mat-card-content class="content">
-      <formly-form
-        [form]="form"
-        [fields]="fields"
-        [model]="model"
-      ></formly-form>
-    </mat-card-content>
-
-    <mat-card-actions class="card__actions">
-      <button mat-raised-button class="card__actions--submit">Enviar</button>
-      <button
-        mat-raised-button
-        class="card__actions--cancel"
-        (click)="onCancel()"
-      >
-        Cancelar
-      </button>
-    </mat-card-actions>
-  </form>
-</mat-card>
+<lab-card-form
+  title="Editar Usuário"
+  subtitle="Edite as informações do usuário"
+  [formGroup]="form"
+  (handleCancel)="onCancel()"
+  (handleSubmit)="onSubmit()"
+>
+  <formly-form
+    [form]="form"
+    [fields]="fields"
+    [model]="model"
+    class="content__input"
+  ></formly-form>
+</lab-card-form>
