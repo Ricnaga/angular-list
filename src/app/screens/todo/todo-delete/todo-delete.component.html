@@ -1,29 +1,13 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title
-      ><p class="mat-headline-5">Excluir Usuário</p></mat-card-title
-    >
-    <mat-card-subtitle>
-      <p class="mat-subtitle-1">Deseja realmente excluir esse usuário ?</p>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item *ngFor="let data of user">
-        <div matListItemTitle>{{ data.title }}:</div>
-        <div matListItemLine>{{ data.description }}</div>
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-
-  <mat-card-actions class="card__actions">
-    <button mat-raised-button class="card__actions--submit">Enviar</button>
-    <button
-      mat-raised-button
-      class="card__actions--cancel"
-      (click)="onCancel()"
-    >
-      Cancelar
-    </button>
-  </mat-card-actions>
-</mat-card>
+<lab-card-form
+  title="Excluir Todo"
+  subtitle="Deseja realmente excluir esse todo ?"
+  (handleCancel)="onCancel()"
+  (handleSubmit)="onDelete()"
+>
+  <mat-list>
+    <mat-list-item *ngFor="let data of user">
+      <div matListItemTitle>{{ data.title }}:</div>
+      <div matListItemLine>{{ data.description }}</div>
+    </mat-list-item>
+  </mat-list>
+</lab-card-form>

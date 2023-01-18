@@ -49,4 +49,8 @@ export class TodoCreateComponent {
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
+
+  onSubmit() {
+    console.warn('this is the submit values: ', this.form.value);
+  }
 }

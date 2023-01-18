@@ -20,4 +20,8 @@ export class TodoDeleteComponent {
   onCancel() {
     this.router.navigate(['../../'], { relativeTo: this.route });
   }
+
+  onDelete() {
+    console.warn('this is the submit values: ');
+  }
 }

@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { RouterModule, Routes } from '@angular/router';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 const routes: Routes = [{ path: '', component: TodoCreateComponent }];
 
@@ -16,9 +17,7 @@ const routes: Routes = [{ path: '', component: TodoCreateComponent }];
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MatCardModule,
-    MatButtonModule,
-    MatInputModule,
+    ComponentsModule,
     ReactiveFormsModule,
     FormlyModule.forRoot(),
     FormlyMaterialModule,

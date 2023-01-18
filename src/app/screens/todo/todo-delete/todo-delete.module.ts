@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { TodoDeleteComponent } from './todo-delete.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { NgModule } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule, Routes } from '@angular/router';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { TodoDeleteComponent } from './todo-delete.component';
 
 const routes: Routes = [{ path: '', component: TodoDeleteComponent }];
 
@@ -12,9 +11,8 @@ const routes: Routes = [{ path: '', component: TodoDeleteComponent }];
   declarations: [TodoDeleteComponent],
   imports: [
     CommonModule,
-    MatCardModule,
-    MatButtonModule,
     MatListModule,
+    ComponentsModule,
     RouterModule.forChild(routes),
   ],
 })
