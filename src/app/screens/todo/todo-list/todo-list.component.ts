@@ -38,15 +38,6 @@ const DATASOURCE_MOCK = [
 
 @Component({
   selector: 'lab-todo-list',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })

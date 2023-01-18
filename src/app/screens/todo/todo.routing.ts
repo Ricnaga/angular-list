@@ -15,10 +15,8 @@ const routes: Routes = [
     children: [
       {
         path: TODO_PATH.list,
-        loadComponent: () =>
-          import('./todo-list/todo-list.component').then(
-            (c) => c.TodoListComponent,
-          ),
+        loadChildren: () =>
+          import('./todo-list/todo-list.module').then((m) => m.TodoListModule),
       },
       {
         path: TODO_PATH.create,
