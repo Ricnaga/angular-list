@@ -1,11 +1,43 @@
 {
+  "users": [
+  ],
   "user": [
-    { "id": "1", "firstName": "joão", "lastName": "fulano", "age": "12" },
-    { "id": "2", "firstName": "maria", "lastName": "cicrano", "age": "25" },
-    { "id": "3", "firstName": "cícero", "lastName": "beltrano", "age": "32" },
-    { "id": "4", "firstName": "roberto", "lastName": "souza", "age": "21" },
-    { "id": "5", "firstName": "bruna", "lastName": "monteiro", "age": "14" },
-    { "id": "6", "firstName": "letícia", "lastName": "lima", "age": "48" }
+    {
+      "id": "1",
+      "firstName": "joão",
+      "lastName": "fulano",
+      "age": "12"
+    },
+    {
+      "id": "2",
+      "firstName": "maria",
+      "lastName": "cicrano",
+      "age": "25"
+    },
+    {
+      "id": "3",
+      "firstName": "cícero",
+      "lastName": "beltrano",
+      "age": "32"
+    },
+    {
+      "id": "4",
+      "firstName": "roberto",
+      "lastName": "souza",
+      "age": "21"
+    },
+    {
+      "id": "5",
+      "firstName": "bruna",
+      "lastName": "monteiro",
+      "age": "14"
+    },
+    {
+      "id": "6",
+      "firstName": "letícia",
+      "lastName": "lima",
+      "age": "48"
+    }
   ],
   "todo": [
     {
