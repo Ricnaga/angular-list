@@ -1,0 +1,41 @@
+@use 'variables' as sass;
+
+@mixin define-grid($rows: span 2, $columns: span 12) {
+  display: grid;
+  grid-row: $rows;
+  grid-column: $columns;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: sass.$primary-light;
+
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(6, 1fr);
+}
+
+.card {
+  @include define-grid(2 / span 4, 3 / span 2);
+  grid-template: repeat(6, 1fr) / repeat(12, 1fr);
+
+  &__title {
+    height: 100%;
+
+    @include define-grid();
+
+    padding-top: 3rem;
+
+    text-align: center;
+  }
+
+  &__form,
+  &__fields,
+  &__button {
+    @include define-grid(span 2, 2 / span 10);
+
+    button {
+      padding: 1.4rem;
+    }
+  }
+}

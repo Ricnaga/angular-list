@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-title class="mat-headline-4 card__title">
+      Bem vindo ao login
+    </mat-card-title>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="card__form">
+      <mat-card-content class="card__fields">
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <mat-icon matSuffix>mail</mat-icon>
+          <input
+            matInput
+            placeholder="E-mail"
+            formControlName="email"
+            type="email"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <mat-icon matSuffix>key</mat-icon>
+          <input
+            matInput
+            placeholder="Senha"
+            formControlName="password"
+            type="password"
+          />
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions class="card__button">
+        <ng-container *ngIf="isButtonLoading; then isLoading; else isButton">
+        </ng-container>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+<ng-template #isButton>
+  <button mat-raised-button color="primary">
+    <mat-icon>login</mat-icon> Entrar
+  </button>
+</ng-template>
+
+<ng-template #isLoading>
+  <button mat-raised-button color="primary">
+    <mat-spinner diameter="20" color="accent"> </mat-spinner>
+  </button>
+</ng-template>
