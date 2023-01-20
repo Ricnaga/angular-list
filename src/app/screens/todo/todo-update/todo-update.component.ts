@@ -7,7 +7,6 @@ import { TodoUpdateFieldEnum } from './todo-update-field.enum';
 @Component({
   selector: 'lab-todo-update',
   templateUrl: './todo-update.component.html',
-  styleUrls: ['./todo-update.component.scss'],
 })
 export class TodoUpdateComponent {
   form: FormGroup;

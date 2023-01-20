@@ -7,7 +7,6 @@ import { TodoCreateFieldEnum } from './todo-create-field.enum';
 @Component({
   selector: 'lab-todo-create',
   templateUrl: './todo-create.component.html',
-  styleUrls: ['./todo-create.component.scss'],
 })
 export class TodoCreateComponent {
   form = new FormGroup({});

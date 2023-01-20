@@ -1,5 +1,10 @@
 @use 'variables' as sass;
 
+@mixin define-grid($bg-color){
+  display: grid;
+  background-color: $bg-color;
+}
+
 .card {
   &__actions {
     padding: 1rem;
@@ -10,15 +15,13 @@
 }
 
 button.card__actions--submit {
-  display: grid;
+  @include define-grid(sass.$primary);
   grid-column: 11/12;
-  background-color: sass.$primary;
 }
 
 button.card__actions--cancel {
-  display: grid;
+  @include define-grid(sass.$secondary);
   grid-column: 12/12;
-  background-color: sass.$secondary;
 }
 
 .content {

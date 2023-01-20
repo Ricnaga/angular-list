@@ -5,7 +5,6 @@ import { TodoDeleteType } from './todo-delete.type';
 @Component({
   selector: 'lab-todo-delete',
   templateUrl: './todo-delete.component.html',
-  styleUrls: ['./todo-delete.component.scss'],
 })
 export class TodoDeleteComponent {
   user: Array<TodoDeleteType> = [
