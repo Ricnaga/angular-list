@@ -1,0 +1,19 @@
+<mat-grid-list cols="1" rowHeight="fit" class="container">
+  <mat-grid-tile rowspan="1">
+    <lab-topbar class="topbar" (menuIconClick)="handleSideBar()"></lab-topbar>
+  </mat-grid-tile>
+
+  <mat-grid-tile rowspan="9">
+    <lab-sidebar
+      [isOpen]="isOpenSideBar"
+      [userName]="'User.Name'"
+      class="sidebar"
+    >
+      <div class="container__body">
+        <router-outlet></router-outlet>
+      </div>
+    </lab-sidebar>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<lab-backdrop *ngIf="false"></lab-backdrop>

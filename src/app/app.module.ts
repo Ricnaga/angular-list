@@ -1,10 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { APP_ROUTING } from './app.routing';
 import { AppComponent } from './app.component';
+import { APP_ROUTING } from './app.routing';
+import { APIConfig, API_CONFIG } from './shared/api.config';
 import { ComponentsModule } from './shared/components/components.module';
 
 @NgModule({
@@ -14,9 +15,14 @@ import { ComponentsModule } from './shared/components/components.module';
     BrowserModule,
     BrowserAnimationsModule,
     ComponentsModule,
-    MatGridListModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: API_CONFIG,
+      useValue: APIConfig.baseURL,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

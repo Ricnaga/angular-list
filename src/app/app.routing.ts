@@ -1,16 +1,23 @@
 import { RouterModule, Routes } from '@angular/router';
-import { TODO, USERS } from './application/routes';
+import { DASHBOARD, LOGIN } from './application/routes';
+import { InnerGuard } from './shared/guards/inner.guard';
+import { OuterGuard } from './shared/guards/outer.guard';
 
 const routes: Routes = [
   {
-    path: USERS,
+    path: DASHBOARD,
     loadChildren: () =>
-      import('./screens/user/user.module').then((m) => m.UserModule),
+      import('./screens/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule,
+      ),
+    canActivate: [InnerGuard],
+    canActivateChild: [InnerGuard],
   },
   {
-    path: TODO,
+    path: LOGIN,
     loadChildren: () =>
-      import('./screens/todo/todo.module').then((m) => m.TodoModule),
+      import('./screens/login/login.module').then((m) => m.LoginModule),
+    canActivate: [OuterGuard],
   },
 ];
 
