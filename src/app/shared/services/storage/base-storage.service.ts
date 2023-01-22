@@ -1,3 +1,5 @@
+import { User } from './base-storage.interface';
+
 enum Key {
   NAME = '@ANGULAR_CRUD_KEY',
 }
@@ -5,8 +7,8 @@ enum Key {
 export abstract class BaseStorageService {
   protected key = Key.NAME;
 
-  abstract getToken(): string | null;
-  abstract setToken(token: string): void;
-  abstract removeToken(): void;
-  abstract clearTokens(): void;
+  abstract getUser(): User | null;
+  abstract setUser(params: User): void;
+  abstract removeUser(): void;
+  abstract clearUser(): void;
 }

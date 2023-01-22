@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from './base-storage.interface';
 import { BaseStorageService } from './base-storage.service';
 
 @Injectable({
@@ -11,16 +12,20 @@ export class LocalService extends BaseStorageService {
     super();
     this.local = localStorage;
   }
-  getToken(): string | null {
-    return this.local.getItem(this.key);
+
+  getUser(): User | null {
+    const user = this.local.getItem(this.key);
+
+    return user ? JSON.parse(user) : null;
   }
-  setToken(token: string): void {
-    this.local.setItem(this.key, token);
+
+  setUser(params: User): void {
+    this.local.setItem(this.key, JSON.stringify(params));
   }
-  removeToken(): void {
+  removeUser(): void {
     this.local.removeItem(this.key);
   }
-  clearTokens(): void {
+  clearUser(): void {
     this.local.clear();
   }
 }

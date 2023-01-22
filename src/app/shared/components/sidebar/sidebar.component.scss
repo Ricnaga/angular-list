@@ -24,4 +24,14 @@
   &__username {
     text-align: center;
   }
+
+  &__logout {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    button {
+      grid-column: 2 / span 2;
+    }
+  }
 }

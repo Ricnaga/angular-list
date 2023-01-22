@@ -10,7 +10,7 @@ export class OuterGuard implements CanActivate {
   constructor(private localService: LocalService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.localService.getToken()) {
+    if (this.localService.getUser()) {
       this.router.navigate([DASHBOARD]);
       return false;
     }

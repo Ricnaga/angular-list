@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from './base-storage.interface';
 import { BaseStorageService } from './base-storage.service';
 
 @Injectable({
@@ -11,16 +12,18 @@ export class SessionService extends BaseStorageService {
     super();
     this.session = sessionStorage;
   }
-  getToken(): string | null {
-    return this.session.getItem(this.key);
+  getUser(): User | null {
+    const user = this.session.getItem(this.key);
+
+    return user ? JSON.parse(user) : null;
   }
-  setToken(token: string): void {
-    this.session.setItem(this.key, token);
+  setUser(params: User): void {
+    this.session.setItem(this.key, JSON.stringify(params));
   }
-  removeToken(): void {
+  removeUser(): void {
     this.session.removeItem(this.key);
   }
-  clearTokens(): void {
+  clearUser(): void {
     this.session.clear();
   }
 }

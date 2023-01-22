@@ -9,6 +9,11 @@
         {{ nav.name }}</a
       >
     </mat-nav-list>
+    <div class="sidebar__logout">
+      <button mat-fab extended color="primary" (click)="onLogout()">
+        <mat-icon>logout</mat-icon> Sair
+      </button>
+    </div>
   </mat-drawer>
   <mat-drawer-content>
     <ng-content></ng-content>

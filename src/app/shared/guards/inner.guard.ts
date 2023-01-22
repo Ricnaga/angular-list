@@ -10,7 +10,7 @@ export class InnerGuard implements CanActivate, CanActivateChild {
   constructor(private localService: LocalService, private router: Router) {}
 
   canActivate(): boolean {
-    if (!this.localService.getToken()) {
+    if (!this.localService.getUser()) {
       this.router.navigate([LOGIN]);
       return false;
     }
@@ -19,7 +19,7 @@ export class InnerGuard implements CanActivate, CanActivateChild {
   }
 
   canActivateChild(): boolean {
-    if (!this.localService.getToken()) {
+    if (!this.localService.getUser()) {
       this.router.navigate([LOGIN]);
       return false;
     }

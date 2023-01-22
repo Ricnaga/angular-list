@@ -4,11 +4,7 @@
   </mat-grid-tile>
 
   <mat-grid-tile rowspan="9">
-    <lab-sidebar
-      [isOpen]="isOpenSideBar"
-      [userName]="'User.Name'"
-      class="sidebar"
-    >
+    <lab-sidebar [isOpen]="isOpenSideBar" class="sidebar">
       <div class="container__body">
         <router-outlet></router-outlet>
       </div>

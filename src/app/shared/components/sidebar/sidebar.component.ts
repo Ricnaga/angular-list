@@ -3,8 +3,10 @@ import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { RouterModule } from '@angular/router';
-import { TODO, USERS } from 'src/app/application/routes';
+import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router';
+import { LOGIN, TODO, USERS } from 'src/app/application/routes';
+import { LocalService } from '../../services/storage/local.service';
 import { SidebarType } from './sidebar.type';
 
 @Component({
@@ -18,14 +20,24 @@ import { SidebarType } from './sidebar.type';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatButtonModule,
   ],
 })
 export class SidebarComponent {
   @Input() isOpen = false;
-  @Input() userName = '';
+  userName: string;
+
+  constructor(private localService: LocalService, private router: Router) {
+    this.userName = this.localService.getUser()?.userName ?? 'user.default';
+  }
 
   navBar: SidebarType = [
     { path: USERS, name: 'Usuários' },
     { path: TODO, name: 'To-do' },
   ];
+
+  onLogout() {
+    this.localService.removeUser();
+    this.router.navigate([LOGIN]);
+  }
 }
