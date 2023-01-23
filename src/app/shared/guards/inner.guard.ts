@@ -9,7 +9,7 @@ import { LocalService } from '../services/storage/local.service';
 export class InnerGuard implements CanActivate, CanActivateChild {
   constructor(private localService: LocalService, private router: Router) {}
 
-  canActivate(): boolean {
+  getCredential(): boolean {
     if (!this.localService.getUser()) {
       this.router.navigate([LOGIN]);
       return false;
@@ -18,12 +18,11 @@ export class InnerGuard implements CanActivate, CanActivateChild {
     return true;
   }
 
-  canActivateChild(): boolean {
-    if (!this.localService.getUser()) {
-      this.router.navigate([LOGIN]);
-      return false;
-    }
+  canActivate(): boolean {
+    return this.getCredential();
+  }
 
-    return true;
+  canActivateChild(): boolean {
+    return this.getCredential();
   }
 }
