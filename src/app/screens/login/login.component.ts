@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DASHBOARD } from 'src/app/application/routes';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { LocalService } from 'src/app/shared/services/storage/local.service';
 import { LoginApiService } from './login-api.service';
 import { LoginEnum } from './login.enum';
 import { ILoginValue } from './login.type';
@@ -17,6 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginApiService: LoginApiService,
+    private localService: LocalService,
+    private router: Router,
+    private snackbarService: SnackbarService,
   ) {
     this.value = { password: '', email: '' };
     this.form = new FormGroup({});
@@ -34,7 +41,18 @@ export class LoginComponent implements OnInit {
     this.isButtonLoading = !this.isButtonLoading;
 
     this.value = Object.assign({}, this.form.value);
-    this.loginApiService.post(this.value);
+    this.loginApiService.post(this.value).subscribe({
+      next: ({ accessToken }) => {
+        this.localService.setUser({
+          token: accessToken,
+          name: 'Ricardo Naga',
+          userName: 'ricardo.dev',
+        });
+        this.router.navigate([DASHBOARD]);
+      },
+      error: () =>
+        this.snackbarService.openSnackbar('Erro! Serviço indisponível'),
+    });
 
     this.isButtonLoading = !this.isButtonLoading;
   }
