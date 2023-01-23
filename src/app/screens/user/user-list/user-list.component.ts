@@ -8,7 +8,6 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { UserListApiService } from './user-list-api.service';
 import { UserListType, UserPathType } from './user-list.type';
 
@@ -39,7 +38,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private userListApiService: UserListApiService,
-    private snackbarService: SnackbarService,
   ) {
     this.displayedColumns = ['id', 'firstName', 'lastName', 'age', 'actions'];
     this.dataSource = new MatTableDataSource();
@@ -51,13 +49,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.userListApiService.get().subscribe({
-      next: (response) => {
-        this.dataSource = new MatTableDataSource(response);
-        this.setPagination();
-      },
-      error: () =>
-        this.snackbarService.openSnackbar('Erro! Serviço indisponível'),
+    this.userListApiService.get().subscribe((response) => {
+      this.dataSource = new MatTableDataSource(response);
+      this.setPagination();
     });
   }
 
