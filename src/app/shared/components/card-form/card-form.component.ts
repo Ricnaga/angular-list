@@ -25,11 +25,4 @@ export class CardFormComponent {
     this.handleCancel = new EventEmitter();
     this.handleSubmit = new EventEmitter();
   }
-
-  onSubmit() {
-    this.handleSubmit.emit();
-  }
-  onCancel() {
-    this.handleCancel.emit();
-  }
 }

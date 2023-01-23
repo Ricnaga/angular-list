@@ -8,7 +8,11 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" *ngIf="formGroup">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="this.handleSubmit.emit()"
+    *ngIf="formGroup"
+  >
     <mat-card-content class="content">
       <ng-container *ngTemplateOutlet="cardContent"></ng-container>
     </mat-card-content>
@@ -29,17 +33,13 @@
 
   <ng-template #cardButtons>
     <mat-card-actions class="card__actions">
-      <button
-        mat-raised-button
-        class="card__actions--submit"
-        (click)="onSubmit()"
-      >
+      <button mat-raised-button class="card__actions--submit" type="submit">
         Enviar
       </button>
       <button
         mat-raised-button
         class="card__actions--cancel"
-        (click)="onCancel()"
+        (click)="this.handleCancel.emit()"
       >
         Cancelar
       </button>
