@@ -56,7 +56,8 @@ export class UserListComponent implements OnInit, AfterViewInit {
         this.dataSource = new MatTableDataSource(response);
         this.setPagination();
       },
-      error: (error) => this.snackbarService.openSnackbar(error),
+      error: () =>
+        this.snackbarService.openSnackbar('Erro! Serviço indisponível'),
     });
   }
 
