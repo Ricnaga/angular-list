@@ -12,7 +12,7 @@ interface FormGroupObject<T> {
   providedIn: 'root',
 })
 export class DynamicFormService {
-  toFormGroup() {
+  toFormGroup(): FormGroup<FormGroupObject<string>> {
     const group: FormGroupObject<string> = {};
 
     this.fields.forEach((field) => {
@@ -27,25 +27,25 @@ export class DynamicFormService {
   get fields(): Array<FieldBaseModel<string>> {
     return [
       new TextboxModel({
-        key: UserCreateFieldEnum.NOME,
-        label: 'Nome',
-        placeholder: 'Informe o nome',
+        key: UserCreateFieldEnum.FIRSTNAME,
+        label: 'First Name',
+        placeholder: 'Insert a first name',
         className: 'content__input__field',
         required: true,
         order: 1,
       }),
       new TextboxModel({
-        key: UserCreateFieldEnum.SOBRENOME,
-        label: 'Sobrenome',
-        placeholder: 'Informe o sobrenome',
+        key: UserCreateFieldEnum.LASTNAME,
+        label: 'Last Name',
+        placeholder: 'Insert a last name',
         className: 'content__input__field',
         required: true,
         order: 1,
       }),
       new TextboxModel({
-        key: UserCreateFieldEnum.IDADE,
-        label: 'Idade',
-        placeholder: 'Informe a idade',
+        key: UserCreateFieldEnum.AGE,
+        label: 'Age',
+        placeholder: 'Insert an Age',
         className: 'content__input__field',
         required: true,
         order: 1,
