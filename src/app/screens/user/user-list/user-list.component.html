@@ -4,9 +4,9 @@
       <mat-label>Filtro</mat-label>
       <input
         matInput
+        (keyup)="onFilter($event)"
         placeholder="Informe o dado a ser filtrado"
         #input
-        (keyup)="onFilter($event)"
       />
     </mat-form-field>
   </div>

@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "typecheck": "tsc -p tsconfig.json --pretty --noEmit",
-    "server": "json-server --watch src/app/application/mocks/json-server.json --delay 2500 --port 3333 -m ./node_modules/json-server-auth",
+    "server": "json-server --watch src/app/application/mocks/json-server.json --delay 1800 --port 3333 -m ./node_modules/json-server-auth",
     "dev": "concurrently \"yarn start\" \"yarn server\""
   },
   "private": true,
