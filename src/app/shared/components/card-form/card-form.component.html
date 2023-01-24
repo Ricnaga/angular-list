@@ -8,11 +8,7 @@
     </mat-card-subtitle>
   </mat-card-header>
 
-  <form
-    [formGroup]="formGroup"
-    (ngSubmit)="this.handleSubmit.emit()"
-    *ngIf="formGroup"
-  >
+  <form [formGroup]="formGroup" *ngIf="formGroup">
     <mat-card-content class="content">
       <ng-container *ngTemplateOutlet="cardContent"></ng-container>
     </mat-card-content>
@@ -33,7 +29,11 @@
 
   <ng-template #cardButtons>
     <mat-card-actions class="card__actions">
-      <button mat-raised-button class="card__actions--submit" type="submit">
+      <button
+        mat-raised-button
+        class="card__actions--submit"
+        (click)="this.handleSubmit.emit()"
+      >
         Enviar
       </button>
       <button

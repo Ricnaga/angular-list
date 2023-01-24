@@ -22,7 +22,7 @@ export class UserCreateApiService {
     this.endpoint = `${this.baseURL}/user`;
   }
 
-  getErrors() {
+  private getErrors() {
     return catchError<IUserCreateResponse, Observable<IUserCreateResponse>>(
       (source) => {
         this.snackbarService.openSnackbar(

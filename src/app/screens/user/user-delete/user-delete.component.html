@@ -7,7 +7,7 @@
   <mat-list>
     <mat-list-item *ngFor="let data of user">
       <div matListItemTitle>{{ data.title }}:</div>
-      <div matListItemLine>{{ data.description }}</div>
+      <div matListItemLine>{{ data.description | titlecase }}</div>
     </mat-list-item>
   </mat-list>
 </lab-card-form>
