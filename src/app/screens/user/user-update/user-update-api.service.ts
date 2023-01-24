@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
-import { API_CONFIG } from 'src/app/shared/api.config';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserBaseApiService } from '../user-base-api.service';
 import {
   IUserUpdateResponse,
   IUserUpdateValue,
@@ -11,23 +9,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class UserUpdateApiService {
-  private endpoint: string;
-  constructor(
-    @Inject(API_CONFIG) private baseURL: string,
-    private http: HttpClient,
-    private snackbarService: SnackbarService,
-  ) {
-    this.endpoint = `${this.baseURL}/user`;
-  }
-
-  private getErrors<T>(message: string) {
-    return catchError<T, Observable<T>>((source) => {
-      this.snackbarService.openSnackbar(message);
-      return source;
-    });
-  }
-
+export class UserUpdateApiService extends UserBaseApiService {
   getById(id: string): Observable<IUserUpdateValue> {
     return this.http
       .get<IUserUpdateValue>(`${this.endpoint}/${id}`)
