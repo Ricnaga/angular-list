@@ -1,26 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TODO } from 'src/app/application/routes';
+import { TodoDeleteApiService } from './todo-delete-api.service';
 import { TodoDeleteType } from './todo-delete.type';
 
 @Component({
   selector: 'lab-todo-delete',
   templateUrl: './todo-delete.component.html',
 })
-export class TodoDeleteComponent {
-  user: Array<TodoDeleteType> = [
-    { title: 'ID', description: '3' },
-    { title: 'Título', description: 'Valter' },
-    { title: 'Descrição', description: 'Escaminosflau' },
-    { title: 'Observações', description: '35' },
-  ];
+export class TodoDeleteComponent implements OnInit {
+  paramId = this.route.snapshot.paramMap.get('id') ?? '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  user: Array<TodoDeleteType> = [];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private todoDeleteApiService: TodoDeleteApiService,
+  ) {}
+
+  ngOnInit(): void {
+    this.todoDeleteApiService.getById(this.paramId).subscribe((response) => {
+      this.user = [
+        { title: 'ID', description: this.paramId },
+        { title: 'Título', description: response.title },
+        { title: 'Descrição', description: response.description },
+        { title: 'Observações', description: response.remarks },
+      ];
+    });
+  }
 
   onCancel() {
     this.router.navigate(['../../'], { relativeTo: this.route });
   }
 
   onDelete() {
-    console.warn('this is the submit values: ');
+    this.todoDeleteApiService
+      .delete(this.paramId)
+      .subscribe(() => this.router.navigate([TODO]));
   }
 }
