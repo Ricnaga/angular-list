@@ -15,7 +15,7 @@ export class UserBaseApiService {
     protected http: HttpClient,
     private snackbarService: SnackbarService,
   ) {
-    this.endpoint = `${this.baseURL}/todo`;
+    this.endpoint = `${this.baseURL}/user`;
   }
 
   protected getErrors<T>(message: string) {
