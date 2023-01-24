@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserBaseApiService } from '../user-base-api.service';
-import {
-  IUserDeleteGeytByIdResponse,
-  IUserDeleteResponse,
-} from './user-delete.type';
+import { IUserValue } from '../user.type';
+
+type IUserDeleteResponse = Record<'id', string>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserDeleteApiService extends UserBaseApiService {
-  getById(id: string): Observable<IUserDeleteGeytByIdResponse> {
+  getById(id: string): Observable<IUserValue> {
     return this.http
-      .get<IUserDeleteGeytByIdResponse>(`${this.endpoint}/${id}`)
+      .get<IUserValue>(`${this.endpoint}/${id}`)
       .pipe(
-        this.getErrors<IUserDeleteGeytByIdResponse>(
+        this.getErrors<IUserValue>(
           'Erro! Não foi possível listar esse usuário',
         ),
       );

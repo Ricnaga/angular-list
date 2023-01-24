@@ -5,12 +5,12 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { USERS } from 'src/app/application/routes';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { IUserValue } from '../user.type';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFormService } from './components/dynamic-form/dynamic-form.service';
 import { FieldBaseModel } from './components/dynamic-form/models/field-base.model';
 import { UserCreateApiService } from './services/user-create-api.service';
 import { UserCreateValidationService } from './services/user-create-validation.service';
-import { IUserCreateValue } from './user-create-field.type';
 
 @Component({
   selector: 'lab-user-create',
@@ -28,7 +28,7 @@ import { IUserCreateValue } from './user-create-field.type';
 export class UserCreateComponent {
   form: FormGroup;
   fields: Array<FieldBaseModel<string>> | null;
-  values!: IUserCreateValue;
+  values!: IUserValue;
 
   constructor(
     private router: Router,

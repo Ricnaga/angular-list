@@ -5,9 +5,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { USERS } from 'src/app/application/routes';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { UserValue } from '../user.enum';
+import { IUserValue } from '../user.type';
 import { UserUpdateApiService } from './user-update-api.service';
-import { UserUpdateFieldEnum } from './user-update-field.enum';
-import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
+
+interface IUserUpdateField {
+  label: string;
+  placeholder: string;
+  formControlName: UserValue;
+}
 
 @Component({
   selector: 'lab-user-update',
@@ -24,7 +30,7 @@ import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
 export class UserUpdateComponent implements OnInit {
   form!: FormGroup;
   fields: Array<IUserUpdateField>;
-  values!: IUserUpdateValue;
+  values!: IUserValue;
   paramId: string;
 
   constructor(
@@ -38,26 +44,26 @@ export class UserUpdateComponent implements OnInit {
       {
         label: 'First Name',
         placeholder: 'Insert a first name',
-        formControlName: UserUpdateFieldEnum.FIRSTNAME,
+        formControlName: UserValue.FIRSTNAME,
       },
       {
         label: 'Last Name',
         placeholder: 'Insert a last name',
-        formControlName: UserUpdateFieldEnum.LASTNAME,
+        formControlName: UserValue.LASTNAME,
       },
       {
         label: 'Age',
         placeholder: 'Insert an Age',
-        formControlName: UserUpdateFieldEnum.AGE,
+        formControlName: UserValue.AGE,
       },
     ];
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      [UserUpdateFieldEnum.FIRSTNAME]: [''],
-      [UserUpdateFieldEnum.LASTNAME]: [''],
-      [UserUpdateFieldEnum.AGE]: [''],
+      [UserValue.FIRSTNAME]: [''],
+      [UserValue.LASTNAME]: [''],
+      [UserValue.AGE]: [''],
     });
     this.userUpdateApiService
       .getById(this.paramId)

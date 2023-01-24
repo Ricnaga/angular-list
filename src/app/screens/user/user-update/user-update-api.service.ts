@@ -1,26 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserBaseApiService } from '../user-base-api.service';
-import {
-  IUserUpdateResponse,
-  IUserUpdateValue,
-} from './user-update-field.type';
+import { IUserValue } from '../user.type';
+
+type IUserUpdateResponse = Record<'id', string>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserUpdateApiService extends UserBaseApiService {
-  getById(id: string): Observable<IUserUpdateValue> {
+  getById(id: string): Observable<IUserValue> {
     return this.http
-      .get<IUserUpdateValue>(`${this.endpoint}/${id}`)
+      .get<IUserValue>(`${this.endpoint}/${id}`)
       .pipe(
-        this.getErrors<IUserUpdateValue>(
+        this.getErrors<IUserValue>(
           'Erro! Não foi possível listar esse usuário',
         ),
       );
   }
 
-  update(id: string, body: IUserUpdateValue): Observable<IUserUpdateResponse> {
+  update(id: string, body: IUserValue): Observable<IUserUpdateResponse> {
     return this.http
       .patch<IUserUpdateResponse>(`${this.endpoint}/${id}`, body)
       .pipe(

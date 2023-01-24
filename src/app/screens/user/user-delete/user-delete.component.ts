@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { USERS } from 'src/app/application/routes';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { UserDeleteApiService } from './user-delete-api.service';
-import { UserDeleteList } from './user-delete.type';
+
+type UserDeleteList = Record<'title' | 'description', string>;
 
 @Component({
   selector: 'lab-user-delete',
