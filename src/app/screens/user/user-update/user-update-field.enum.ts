@@ -1,5 +1,5 @@
 export enum UserUpdateFieldEnum {
-  NOME = 'nome',
-  SOBRENOME = 'sobrenome',
-  IDADE = 'idade',
+  FIRSTNAME = 'firstName',
+  LASTNAME = 'lastName',
+  AGE = 'age',
 }

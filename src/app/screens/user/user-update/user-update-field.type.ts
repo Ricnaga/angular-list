@@ -7,8 +7,10 @@ export interface IUserUpdateField {
 }
 
 export type IUserUpdateValue = Record<
-  | UserUpdateFieldEnum.NOME
-  | UserUpdateFieldEnum.SOBRENOME
-  | UserUpdateFieldEnum.IDADE,
+  | UserUpdateFieldEnum.FIRSTNAME
+  | UserUpdateFieldEnum.LASTNAME
+  | UserUpdateFieldEnum.AGE,
   string
 >;
+
+export type IUserUpdateResponse = Record<'id', string>;

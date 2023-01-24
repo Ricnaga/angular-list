@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
+import { USERS } from 'src/app/application/routes';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { UserUpdateApiService } from './user-update-api.service';
 import { UserUpdateFieldEnum } from './user-update-field.enum';
 import { IUserUpdateField, IUserUpdateValue } from './user-update-field.type';
 
@@ -23,37 +25,43 @@ export class UserUpdateComponent implements OnInit {
   form!: FormGroup;
   fields: Array<IUserUpdateField>;
   values!: IUserUpdateValue;
+  paramId: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private userUpdateApiService: UserUpdateApiService,
   ) {
+    this.paramId = this.route.snapshot.paramMap.get('id') ?? '';
     this.fields = [
       {
-        label: 'Nome',
-        placeholder: 'Informe o nome',
-        formControlName: UserUpdateFieldEnum.NOME,
+        label: 'First Name',
+        placeholder: 'Insert a first name',
+        formControlName: UserUpdateFieldEnum.FIRSTNAME,
       },
       {
-        label: 'Sobrenome',
-        placeholder: 'Informe o sobrenome',
-        formControlName: UserUpdateFieldEnum.SOBRENOME,
+        label: 'Last Name',
+        placeholder: 'Insert a last name',
+        formControlName: UserUpdateFieldEnum.LASTNAME,
       },
       {
-        label: 'Idade',
-        placeholder: 'Informe a idade',
-        formControlName: UserUpdateFieldEnum.IDADE,
+        label: 'Age',
+        placeholder: 'Insert an Age',
+        formControlName: UserUpdateFieldEnum.AGE,
       },
     ];
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      [UserUpdateFieldEnum.NOME]: [''],
-      [UserUpdateFieldEnum.SOBRENOME]: [''],
-      [UserUpdateFieldEnum.IDADE]: [''],
+      [UserUpdateFieldEnum.FIRSTNAME]: [''],
+      [UserUpdateFieldEnum.LASTNAME]: [''],
+      [UserUpdateFieldEnum.AGE]: [''],
     });
+    this.userUpdateApiService
+      .getById(this.paramId)
+      .subscribe((response) => this.form.patchValue(response));
   }
 
   onCancel() {
@@ -62,6 +70,8 @@ export class UserUpdateComponent implements OnInit {
 
   onSubmit() {
     this.values = Object.assign({}, this.form.value);
-    console.warn('this is the submit values: ', this.values);
+    this.userUpdateApiService
+      .update(this.paramId, this.values)
+      .subscribe(() => this.router.navigate([USERS]));
   }
 }
