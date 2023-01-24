@@ -12,6 +12,10 @@ export class UserCreateApiService extends UserBaseApiService {
   post(body: IUserValue): Observable<IUserCreateResponse> {
     return this.http
       .post<IUserCreateResponse>(this.endpoint, body)
-      .pipe(this.getErrors('Erro! Não foi possível criar usuário'));
+      .pipe(
+        this.getErrors<IUserCreateResponse>(
+          'Erro! Não foi possível criar usuário',
+        ),
+      );
   }
 }

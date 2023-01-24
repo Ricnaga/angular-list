@@ -10,6 +10,10 @@ export class TodoListApiService extends TodoBaseApiService {
   get(): Observable<Array<TodoListType>> {
     return this.http
       .get<Array<TodoListType>>(this.endpoint)
-      .pipe(this.getErrors('Erro! Não foi possível listar todos'));
+      .pipe(
+        this.getErrors<Array<TodoListType>>(
+          'Erro! Não foi possível listar todos',
+        ),
+      );
   }
 }

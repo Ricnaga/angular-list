@@ -12,6 +12,10 @@ export class TodoCreateApiService extends TodoBaseApiService {
   post(body: ITodo): Observable<TodoCreateResponse> {
     return this.http
       .post<TodoCreateResponse>(this.endpoint, body)
-      .pipe(this.getErrors('Erro! Não foi possível criar esse todo'));
+      .pipe(
+        this.getErrors<TodoCreateResponse>(
+          'Erro! Não foi possível criar esse todo',
+        ),
+      );
   }
 }

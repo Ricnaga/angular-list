@@ -10,6 +10,10 @@ export class UserListApiService extends UserBaseApiService {
   get(): Observable<Array<UserListType>> {
     return this.http
       .get<Array<UserListType>>(this.endpoint)
-      .pipe(this.getErrors('Erro! não foi possível istar usuários'));
+      .pipe(
+        this.getErrors<Array<UserListType>>(
+          'Erro! não foi possível istar usuários',
+        ),
+      );
   }
 }
