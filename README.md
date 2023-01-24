@@ -1,28 +1,48 @@
-# AngularList
+<div align="center">
+<img src="./cover.jpg" />
+<img src="./field.jpg" />
+<img src="./loading.jpg" />
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+<div align="center">
 
-## Development server
+# dot-cecilia
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+</div>
 
-## Code scaffolding
+<img src="https://img.shields.io/github/license/Ricnaga/angular-list?style=social"/>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### <div align="center"> Aplicação em Angular, abordando conceitos sobre: </div>
 
-## Build
+- [TypeScript](https://www.typescriptlang.org/) - Tipagens 
+- [Angular](https://angular.io/) - Rotas | lazy loading | services | interceptors | components | guardas | Observables | dynamic forms | storage | classes | providers
+- [Material Angular](https://material.angular.io/) - UI para agilidade no desenvolvimento
+- [SASS](https://sass-lang.com/) - Pré processador CSS | modelo BEM
+- [json-server](https://github.com/typicode/json-server) - Mock de backend
+- [Formly](https://formly.dev/) - Montagem de formulários dinâmicos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## <div align="center">Requisitos</div>
 
-## Running unit tests
+Para executar a aplicação é necessário instalar algumas ferramentas tais como um editor de códigos para realizar compilação dos mesmos. Nesse projeto foi utilizado o [Visual Studio Code](https://code.visualstudio.com/), [NodeJS](https://nodejs.org/en/) para compilação do código, [Git Bash](https://gitforwindows.org/) para baixar o repositório e baixar todas as dependências necessárias. Necessário também instalar o [@angular/cli](https://angular.io/guide/setup-local#prerequisites) para instalar as dependências do angular
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Clone este repositório(caso ja tenha feito isso no passo anterior, pule para o próximo comando)
+$ git clone <https://github.com/Ricnaga/angular-list>
 
-## Running end-to-end tests
+# Acesse a pasta do projeto no terminal/cmd
+$ cd angular-list
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Instale as dependências
+$ yarn (ou npm -i)
 
-## Further help
+# Inicie a aplicação sem mock
+$ yarn start (ou npm run start ou ng serve)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# angular-list
+# Inicie o servidor mock
+$ yarn server (ou npm run server)
+
+# Para iniciar os dois ao mesmo tempo
+$ yarn dev (ou npm run dev)
+
+# A aplicação abrirá automaticamente um navegador com o endereço <http://localhost:4200>
+```
