@@ -61,9 +61,9 @@ export class TodoUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoUpdateApiService
-      .getById(this.paramId)
-      .subscribe((response) => this.form.patchValue(response));
+    this.todoUpdateApiService.getById(this.paramId).subscribe((response) => {
+      this.model = response;
+    });
   }
 
   onCancel() {
