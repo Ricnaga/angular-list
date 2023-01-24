@@ -4,7 +4,7 @@ import { catchError, Observable } from 'rxjs';
 import { API_CONFIG } from 'src/app/shared/api.config';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import {
-  IUserDeleteDeleteResponse,
+  IUserDeleteResponse,
   IUserDeleteGeytByIdResponse,
 } from './user-delete.type';
 
@@ -39,11 +39,11 @@ export class UserDeleteApiService {
       );
   }
 
-  delete(id: string): Observable<IUserDeleteDeleteResponse> {
+  delete(id: string): Observable<IUserDeleteResponse> {
     return this.http
-      .delete<IUserDeleteDeleteResponse>(`${this.endpoint}/${id}`)
+      .delete<IUserDeleteResponse>(`${this.endpoint}/${id}`)
       .pipe(
-        this.getErrors<IUserDeleteDeleteResponse>(
+        this.getErrors<IUserDeleteResponse>(
           'Erro! Não foi possível remover esse usuário',
         ),
       );

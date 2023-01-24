@@ -12,4 +12,4 @@ export type IUserDeleteGeytByIdResponse = Record<
   string
 >;
 
-export type IUserDeleteDeleteResponse = Record<'id', string>;
+export type IUserDeleteResponse = Record<'id', string>;
