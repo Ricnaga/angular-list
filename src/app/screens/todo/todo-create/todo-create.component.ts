@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { TodoCreateFieldEnum } from './todo-create-field.enum';
+import { TODO } from 'src/app/application/routes';
+import { TodoCreateApiService } from './todo-create-api.service';
+import {
+  TodoCreateFieldEnum,
+  TodoCreateValues,
+} from './todo-create-field.enum';
 
 @Component({
   selector: 'lab-todo-create',
@@ -11,45 +16,54 @@ import { TodoCreateFieldEnum } from './todo-create-field.enum';
 export class TodoCreateComponent {
   form = new FormGroup({});
   model = {};
+  values!: TodoCreateValues;
   fields: FormlyFieldConfig[] = [
     {
-      key: TodoCreateFieldEnum.TITULO,
+      key: TodoCreateFieldEnum.TITLE,
       type: 'input',
       props: {
         appearance: 'outline',
-        label: 'Título',
-        placeholder: 'Informe o título',
+        label: 'Title',
+        placeholder: 'insert a title',
         required: true,
       },
     },
     {
-      key: TodoCreateFieldEnum.DESCRICAO,
-      type: 'input',
+      key: TodoCreateFieldEnum.DESCRIPTION,
+      type: 'textarea',
       props: {
         appearance: 'outline',
-        label: 'Descrição',
-        placeholder: 'Informe o descrição',
+        label: 'Description',
+        placeholder: 'insert a description',
         required: true,
       },
     },
     {
-      key: TodoCreateFieldEnum.OBSERVACAO,
+      key: TodoCreateFieldEnum.REMARKS,
       type: 'input',
       props: {
         appearance: 'outline',
-        label: 'Observação',
-        placeholder: 'Informe a observação',
+        label: 'Remarks',
+        placeholder: 'insert a Remarks',
         required: true,
       },
     },
   ];
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private todoCreateApiService: TodoCreateApiService,
+  ) {}
 
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onSubmit() {
-    console.warn('this is the submit values: ', this.form.value);
+    this.values = Object.assign({}, this.form.value as TodoCreateValues);
+
+    this.todoCreateApiService
+      .post(this.values)
+      .subscribe(() => this.router.navigate([TODO]));
   }
 }
