@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
       next: ({ accessToken }) => {
         this.localService.setUser({
           token: accessToken,
-          name: 'Ricardo Naga',
-          userName: 'ricardo.dev',
+          name: 'Mock Dev',
+          userName: 'mocked.dev',
         });
         this.router.navigate([DASHBOARD]);
       },
