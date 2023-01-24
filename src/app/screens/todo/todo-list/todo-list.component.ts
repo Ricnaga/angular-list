@@ -1,47 +1,28 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TodoListApiService } from './todo-list-api.service';
 import { TodoColumnKey, TodoListType, TodoPathType } from './todo-list.type';
-
-const DATASOURCE_MOCK = [
-  {
-    id: '1',
-    title: 'valter',
-    description: 'souza',
-    remarks: 'observation 1',
-  },
-  {
-    id: '2',
-    title: 'luiz',
-    description: 'monteiro',
-    remarks: 'observation 2',
-  },
-  {
-    id: '3',
-    title: 'flavio',
-    description: 'escaminosflau',
-    remarks: 'observation 3',
-  },
-  {
-    id: '4',
-    title: 'roberta',
-    description: 'fulas',
-    remarks: 'observation 4',
-  },
-];
 
 @Component({
   selector: 'lab-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
 })
-export class TodoListComponent implements AfterViewInit {
+export class TodoListComponent implements OnInit, AfterViewInit {
   displayedColumns: TodoColumnKey;
   dataSource: MatTableDataSource<TodoListType>;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private todoListApiService: TodoListApiService,
+  ) {
     this.displayedColumns = [
       'id',
       'title',
@@ -49,20 +30,32 @@ export class TodoListComponent implements AfterViewInit {
       'remarks',
       'actions',
     ];
-    this.dataSource = new MatTableDataSource(DATASOURCE_MOCK);
+    this.dataSource = new MatTableDataSource();
   }
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
+  setPagination() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnInit(): void {
+    this.todoListApiService.get().subscribe((response) => {
+      this.dataSource = new MatTableDataSource(response);
+      this.setPagination();
+    });
+  }
+
+  ngAfterViewInit() {
+    this.setPagination();
   }
 
   onFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   onNavigateTo(path: TodoPathType, id = '') {
