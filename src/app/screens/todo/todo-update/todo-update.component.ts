@@ -3,9 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { TODO } from 'src/app/application/routes';
+import { TodoValue } from '../todo.enum';
+import { ITodo } from '../todo.type';
 import { TodoUpdateApiService } from './todo-update-api.service';
-import { TodoUpdateFieldEnum } from './todo-update-field.enum';
-import { ITodoUpdateValue } from './todo-update-field.type';
 
 @Component({
   selector: 'lab-todo-update',
@@ -16,7 +16,7 @@ export class TodoUpdateComponent implements OnInit {
   model: Record<symbol, symbol>;
   fields: FormlyFieldConfig[];
   paramId: string;
-  values!: ITodoUpdateValue;
+  values!: ITodo;
 
   constructor(
     private router: Router,
@@ -28,7 +28,7 @@ export class TodoUpdateComponent implements OnInit {
     this.model = {};
     this.fields = [
       {
-        key: TodoUpdateFieldEnum.TITLE,
+        key: TodoValue.TITLE,
         type: 'input',
         props: {
           appearance: 'outline',
@@ -38,7 +38,7 @@ export class TodoUpdateComponent implements OnInit {
         },
       },
       {
-        key: TodoUpdateFieldEnum.DESCRIPTION,
+        key: TodoValue.DESCRIPTION,
         type: 'textarea',
         props: {
           appearance: 'outline',
@@ -48,7 +48,7 @@ export class TodoUpdateComponent implements OnInit {
         },
       },
       {
-        key: TodoUpdateFieldEnum.REMARKS,
+        key: TodoValue.REMARKS,
         type: 'input',
         props: {
           appearance: 'outline',
@@ -71,7 +71,7 @@ export class TodoUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.values = Object.assign({}, this.form.value as ITodoUpdateValue);
+    this.values = Object.assign({}, this.form.value as ITodo);
     this.todoUpdateApiService
       .update(this.paramId, this.values)
       .subscribe(() => this.router.navigate([TODO]));

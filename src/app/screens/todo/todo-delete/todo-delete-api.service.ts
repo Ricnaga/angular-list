@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodoBaseApiService } from '../todo-base-api.service';
-import {
-  ITodoDeleteGeytByIdResponse,
-  ITodoDeleteResponse,
-} from './todo-delete.type';
+import { ITodo } from '../todo.type';
+
+type ITodoDeleteResponse = Record<'id', string>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoDeleteApiService extends TodoBaseApiService {
-  getById(id: string): Observable<ITodoDeleteGeytByIdResponse> {
+  getById(id: string): Observable<ITodo> {
     return this.http
-      .get<ITodoDeleteGeytByIdResponse>(`${this.endpoint}/${id}`)
-      .pipe(
-        this.getErrors<ITodoDeleteGeytByIdResponse>(
-          'Erro! Não foi possível listar esse todo',
-        ),
-      );
+      .get<ITodo>(`${this.endpoint}/${id}`)
+      .pipe(this.getErrors<ITodo>('Erro! Não foi possível listar esse todo'));
   }
 
   delete(id: string): Observable<ITodoDeleteResponse> {

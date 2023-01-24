@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TODO } from 'src/app/application/routes';
 import { TodoDeleteApiService } from './todo-delete-api.service';
-import { TodoDeleteType } from './todo-delete.type';
+
+type TodoDeleteType = Record<'title' | 'description', string>;
 
 @Component({
   selector: 'lab-todo-delete',

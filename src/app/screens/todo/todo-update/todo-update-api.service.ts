@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TodoBaseApiService } from '../todo-base-api.service';
-import {
-  ITodoUpdateResponse,
-  ITodoUpdateValue,
-} from './todo-update-field.type';
+import { ITodo } from '../todo.type';
+
+type ITodoUpdateResponse = Record<'id', string>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoUpdateApiService extends TodoBaseApiService {
-  getById(id: string): Observable<ITodoUpdateValue> {
+  getById(id: string): Observable<ITodo> {
     return this.http
-      .get<ITodoUpdateValue>(`${this.endpoint}/${id}`)
-      .pipe(
-        this.getErrors<ITodoUpdateValue>(
-          'Erro! Não foi possível listar esse todo',
-        ),
-      );
+      .get<ITodo>(`${this.endpoint}/${id}`)
+      .pipe(this.getErrors<ITodo>('Erro! Não foi possível listar esse todo'));
   }
 
-  update(id: string, body: ITodoUpdateValue): Observable<ITodoUpdateResponse> {
+  update(id: string, body: ITodo): Observable<ITodoUpdateResponse> {
     return this.http
       .patch<ITodoUpdateResponse>(`${this.endpoint}/${id}`, body)
       .pipe(

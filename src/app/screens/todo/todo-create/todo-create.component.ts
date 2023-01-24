@@ -3,11 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { TODO } from 'src/app/application/routes';
+import { TodoValue } from '../todo.enum';
+import { ITodo } from '../todo.type';
 import { TodoCreateApiService } from './todo-create-api.service';
-import {
-  TodoCreateFieldEnum,
-  TodoCreateValues,
-} from './todo-create-field.enum';
 
 @Component({
   selector: 'lab-todo-create',
@@ -16,10 +14,10 @@ import {
 export class TodoCreateComponent {
   form = new FormGroup({});
   model = {};
-  values!: TodoCreateValues;
+  values!: ITodo;
   fields: FormlyFieldConfig[] = [
     {
-      key: TodoCreateFieldEnum.TITLE,
+      key: TodoValue.TITLE,
       type: 'input',
       props: {
         appearance: 'outline',
@@ -29,7 +27,7 @@ export class TodoCreateComponent {
       },
     },
     {
-      key: TodoCreateFieldEnum.DESCRIPTION,
+      key: TodoValue.DESCRIPTION,
       type: 'textarea',
       props: {
         appearance: 'outline',
@@ -39,7 +37,7 @@ export class TodoCreateComponent {
       },
     },
     {
-      key: TodoCreateFieldEnum.REMARKS,
+      key: TodoValue.REMARKS,
       type: 'input',
       props: {
         appearance: 'outline',
@@ -60,7 +58,7 @@ export class TodoCreateComponent {
   }
 
   onSubmit() {
-    this.values = Object.assign({}, this.form.value as TodoCreateValues);
+    this.values = Object.assign({}, this.form.value as ITodo);
 
     this.todoCreateApiService
       .post(this.values)
