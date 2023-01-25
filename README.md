@@ -6,7 +6,7 @@
 
 <div align="center">
 
-# dot-cecilia
+# Angular list
 
 </div>
 
